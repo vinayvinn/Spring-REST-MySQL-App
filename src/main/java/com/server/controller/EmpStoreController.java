@@ -31,7 +31,7 @@ public class EmpStoreController {
 	@GetMapping(value={"/","/home"})
 	@ResponseBody
 	public String getHome() {
-		return "<h2><center>Welcome to the Homepage..</center></h2>";
+		return "<h2><center>Welcome to the default Homepage..</center></h2>";
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST,consumes="application/json",
@@ -44,6 +44,7 @@ public class EmpStoreController {
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteEmp(@PathVariable int id) throws DatabaseException{
 		String msg=service.deleteEmp(id);
+		System.out.println("the deleteEmp() in EmpStoreController")
 		return new ResponseEntity<String>(msg,HttpStatus.ACCEPTED);
 	}
 	
